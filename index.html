@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f4">
+  <meta name="description" content="Descubre, combina y guarda nombres especiales para tu bebé. Una experiencia divertida para futuros padres.">
+  <title>Un Nombre, Mil Sueños | Creador de nombres</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">✿</div>
+      <p class="eyebrow">UN PEQUEÑO COMIENZO, UNA GRAN HISTORIA</p>
+      <h1>Un nombre,<br><span>mil sueños.</span></h1>
+      <p class="hero-copy">Encuentren ese nombre que les haga sonreír el corazón.</p>
+      <div class="hero-sparkles" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span></div>
+    </header>
+
+    <nav class="tabs" aria-label="Secciones de la aplicación" role="tablist">
+      <button class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="mezclador" id="tab-mezclador" data-tab="mezclador">♡ <span>Crear un nombre</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="favoritos" id="tab-favoritos" data-tab="favoritos">☆ <span>Mis favoritos</span><span class="favorite-count" id="favorite-count">0</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="coleccion" id="tab-coleccion" data-tab="coleccion">☷ <span>Explorar nombres</span></button>
+    </nav>
+
+    <section class="panel active" id="mezclador" role="tabpanel" aria-labelledby="tab-mezclador">
+      <div class="section-intro">
+        <span class="step-label">SU HISTORIA COMIENZA AQUÍ</span>
+        <h2>Vamos a imaginarlo…</h2>
+        <p>Combinen sus ideas y descubran cómo podría sonar el nombre de su bebé.</p>
+      </div>
+
+      <div class="builder-card">
+        <fieldset class="choice-field">
+          <legend>¿Qué nombres quieren descubrir?</legend>
+          <div class="choice-pills" id="gender-choices">
+            <label class="choice-pill"><input type="radio" name="gender" value="Niña" checked><span>🌷 Niña</span></label>
+            <label class="choice-pill"><input type="radio" name="gender" value="Niño"><span>🧸 Niño</span></label>
+            <label class="choice-pill"><input type="radio" name="gender" value="Unisex"><span>🌈 Unisex</span></label>
+          </div>
+        </fieldset>
+
+        <div class="name-fields">
+          <div class="field">
+            <label for="nombre1">Primer nombre <span>01</span></label>
+            <select id="nombre1"><option value="">Elijan un nombre…</option></select>
+          </div>
+          <div class="field">
+            <label for="nombre2">Segundo nombre <span>02</span></label>
+            <select id="nombre2"><option value="">Elijan otro nombre…</option></select>
+          </div>
+        </div>
+
+        <div class="field surnames-field">
+          <label>Sus apellidos <span>PARA IMAGINARLO COMPLETO</span></label>
+          <div class="surname-row">
+            <input type="text" id="apellido1" value="Castro" maxlength="50" aria-label="Primer apellido" placeholder="Primer apellido">
+            <button class="swap-button" type="button" id="swap-surnames" title="Intercambiar apellidos" aria-label="Intercambiar apellidos">⇄</button>
+            <input type="text" id="apellido2" value="Vergara" maxlength="50" aria-label="Segundo apellido" placeholder="Segundo apellido">
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button class="button button-primary" id="surprise-button" type="button"><span aria-hidden="true">✧</span> ¡Sorpréndenos!</button>
+          <button class="button button-soft" id="clear-button" type="button">Empezar de nuevo</button>
+        </div>
+      </div>
+
+      <section class="preview-card" aria-labelledby="preview-title">
+        <div class="preview-top"><span class="preview-heart" aria-hidden="true">♡</span><span class="preview-label">UNA POSIBLE HISTORIA</span></div>
+        <p class="preview-hint" id="preview-hint">Cada gran historia comienza con un nombre…</p>
+        <h2 id="resultadoFinal" aria-live="polite">Su bebé podría llamarse…</h2>
+        <p class="preview-note" id="preview-note">Elijan uno o dos nombres para ver cómo suenan juntos.</p>
+        <div class="preview-actions">
+          <button class="button button-primary" id="save-favorite" type="button" disabled>♡ Guardar favorito</button>
+          <button class="button button-outline" id="copy-name" type="button" disabled>Copiar nombre</button>
+        </div>
+        <p class="tiny-note">No hay una elección perfecta: la mejor será la que tenga significado para ustedes.</p>
+      </section>
+
+      <div class="tip-strip"><span aria-hidden="true">💡</span><p><strong>Un pequeño consejo:</strong> pronuncien el nombre completo en voz alta. ¡A veces ahí aparece la magia!</p></div>
+    </section>
+
+    <section class="panel" id="favoritos" role="tabpanel" aria-labelledby="tab-favoritos" hidden>
+      <div class="section-intro">
+        <span class="step-label">PEQUEÑOS NOMBRES, GRANDES ILUSIONES</span>
+        <h2>Su lista especial ♡</h2>
+        <p>Guarden las combinaciones que les hagan imaginar el futuro.</p>
+      </div>
+      <div id="favorites-list" class="favorites-grid"></div>
+      <div id="favorites-empty" class="empty-state"><div class="empty-illustration" aria-hidden="true">♡</div><h3>Su historia todavía está por escribirse</h3><p>Cuando encuentren un nombre que les encante, guárdenlo aquí para volver a él cuando quieran.</p><button class="button button-primary" type="button" data-go="mezclador">Descubrir nombres</button></div>
+    </section>
+
+    <section class="panel" id="coleccion" role="tabpanel" aria-labelledby="tab-coleccion" hidden>
+      <div class="section-intro">
+        <span class="step-label">UN UNIVERSO DE POSIBILIDADES</span>
+        <h2>Exploren nombres</h2>
+        <p>Busquen inspiración o añadan ese nombre especial que ya tienen en mente.</p>
+      </div>
+      <div class="collection-tools">
+        <label class="search-field"><span aria-hidden="true">⌕</span><input type="search" id="search-name" placeholder="Buscar un nombre…" aria-label="Buscar un nombre"></label>
+        <select id="filter-gender" aria-label="Filtrar por categoría"><option value="Todos">Todas las categorías</option><option value="Niña">Niña</option><option value="Niño">Niño</option><option value="Unisex">Unisex</option></select>
+      </div>
+      <form class="add-name-card" id="add-name-form">
+        <div><h3>¿Tienen un nombre para compartir?</h3><p>Añádanlo a su colección personal.</p></div>
+        <div class="add-name-fields"><label class="sr-only" for="new-name">Nuevo nombre</label><input id="new-name" type="text" maxlength="40" placeholder="Ej. Amalia" required><label class="sr-only" for="new-gender">Categoría del nombre</label><select id="new-gender"><option value="Niña">Niña</option><option value="Niño">Niño</option><option value="Unisex">Unisex</option></select><button class="button button-primary" type="submit">Añadir +</button></div>
+      </form>
+      <div class="collection-heading"><h3>La colección</h3><span id="collection-count">0 nombres</span></div>
+      <div id="names-grid" class="names-grid"></div>
+      <p id="collection-empty" class="empty-inline" hidden>No encontramos nombres con esos filtros. Prueben otra búsqueda.</p>
+    </section>
+
+    <footer class="app-footer"><span aria-hidden="true">✿</span><p>Hecho para imaginar juntos lo más bonito que está por venir.</p><span aria-hidden="true">✿</span></footer>
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+  </main>
+</body>
+</html>
